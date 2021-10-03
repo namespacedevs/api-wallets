@@ -5,13 +5,15 @@ import {
     Put, 
     Post,
     Param,
-    Body
+    Body,
+    Req
     } from "@nestjs/common";
+import { Request } from "@nestjs/common";
 
 @Controller('v1/users')
 export class UserController {
     @Get()
-    findAll(): string {
+    findAll(@Req() resquest: Request): string {
         return 'Obter os usuários';
     }
     @Get(':CPF')
