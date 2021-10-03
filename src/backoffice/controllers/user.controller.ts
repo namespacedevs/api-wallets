@@ -24,7 +24,7 @@ export class UserController {
     }
 
     @Put(':CPF')
-    put(@Param('CPF') CPF, @Body() body) {
+    update(@Param('CPF') CPF, @Body() body) {
         return{
             user: CPF,
             data: body,
