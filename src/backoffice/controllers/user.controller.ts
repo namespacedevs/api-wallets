@@ -12,11 +12,11 @@ import {
 export class UserController {
     @Get()
     get() {
-        return 'Obter um usuário';
+        return 'Obter os usuários';
     }
     @Get(':CPF')
     getById(@Param('CPF') CPF) {
-        return 'Obter um usuário' + CPF;
+        return 'Obter o usuário ' + CPF;
     }
 0
     @Post()
@@ -32,8 +32,8 @@ export class UserController {
         };
     }
 
-    @Delete()
-    delete(@Body() body) {
-        return body;
+    @Delete(':CPF')
+    delete(@Param('CPF') CPF) {
+        return "Usuário removido com sucesso";
     }
 }
