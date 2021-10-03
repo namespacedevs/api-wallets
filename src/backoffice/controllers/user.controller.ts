@@ -11,16 +11,15 @@ import {
 @Controller('v1/users')
 export class UserController {
     @Get()
-    get() {
+    findAll(): string {
         return 'Obter os usuários';
     }
     @Get(':CPF')
     getById(@Param('CPF') CPF) {
         return 'Obter o usuário ' + CPF;
     }
-0
     @Post()
-    post(@Body() body) {
+    create(@Body() body) {
         return body;
     }
 
