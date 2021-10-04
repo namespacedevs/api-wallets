@@ -17,7 +17,7 @@ export class UserController {
         return 'Obter os usuários';
     }
     @Get(':CPF')
-    getById(@Param('CPF') CPF) {
+    FindOne(@Param('CPF') CPF) {
         return 'Obter o usuário ' + CPF;
     }
     @Post()

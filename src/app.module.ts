@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { BackofficeModule } from './backoffice/backoffice.module';
-import { UserController } from './backoffice/controllers/user.controller';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { UserModule } from './users/user.module';
+
 
 @Module({
-  imports: [BackofficeModule],
-  controllers: [UserController],
-  providers: [],
+  imports: [UserModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
