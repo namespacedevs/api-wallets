@@ -2,39 +2,41 @@ import {
     Controller,
     Delete,
     Get,
-    Put, 
-    Post,
+    //Put, 
+    //Post,
     Param,
-    Body,
-    Req
     } from "@nestjs/common";
-import { Request } from "@nestjs/common";
+import { UserModel } from "../model/user.model";
+import { UserService } from "../providers/user.service";
 
 @Controller('v1/users')
 export class UserController {
+
+    constructor(
+        private userService: UserService
+        ){ }
+
     @Get()
-    findAll(@Req() resquest: Request): string {
-        return 'Obter os usuários';
+    async findAll() : Promise<UserModel[]>{
+        return this.userService.findAll();
     }
-    @Get(':CPF')
-    FindOne(@Param('CPF') CPF) {
-        return 'Obter o usuário ' + CPF;
+    @Get(':document')
+    async findOne(@Param('document') document: number) : Promise<UserModel>{
+        return this.userService.findOne(document);
     }
-    @Post()
-    create(@Body() body) {
-        return body;
-    }
+    //@Post()
+    //create() {
+       //return;
+    //}
 
-    @Put(':CPF')
-    update(@Param('CPF') CPF, @Body() body) {
-        return{
-            user: CPF,
-            data: body,
-        };
-    }
+    //  @Put(':document')
+    //update(@Param('document') document: number) {
+        //return this.userService.update(+document);
+    //}
 
-    @Delete(':CPF')
-    delete(@Param('CPF') CPF) {
-        return "Usuário removido com sucesso";
+    @Delete(':document')
+    async  delete(@Param('document') document: number) {
+        this.userService.delete(document);
+        console.log("User " + document + " removido")
     }
 }
