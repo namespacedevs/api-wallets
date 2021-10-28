@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UserModel } from '../model/user.model';
+import { User } from '../users.entity';
 
 @Injectable()
 export class UserService {
+constructor(
+@InjectRepository(User)
+private userRepository: Repository<User>
+) {}
+
     users: UserModel[] = [
         { name: 'Thiago', email: 'thiago@tesla.com', document: 12345678911 },
         { name: 'Uigor', email: 'uigor@marshall.com', document: 12345678912 },
@@ -12,7 +20,9 @@ export class UserService {
     ];
 
     findAll() {
-        return this.users;
+        console.log(this.userRepository.find());
+        return this.userRepository.find();
+        
     }
     findOne(document: number) {
         const user = this.users.find((user) => user.document == document);
