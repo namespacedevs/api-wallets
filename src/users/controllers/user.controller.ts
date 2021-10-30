@@ -22,23 +22,23 @@ export class UserController {
     async findAll(): Promise<UserModel[]> {
         return this.userService.findAll();
     }
-    @Get(':document')
-    async findOne(@Param('document') document: number): Promise<UserModel> {
-        return this.userService.findOne(document);
+    @Get(':id')
+    async findOne(@Param('id') id: number): Promise<UserModel> {
+        return this.userService.findOne(id);
     }
-    @Post()
-    create(@Body() createDto: CreateUserDto) {
-        return this.userService.create(createDto);
-    }
+    //@Post()
+    //create(@Body() createDto: CreateUserDto) {
+    //    return this.userService.create(createDto);
+    // }
 
-    @Put(':document')
-    update(@Param('document') document: number, @Body() updateUserDto: CreateUserDto) {
-        console.log(updateUserDto);
-        return this.userService.update(document, updateUserDto);
-    }
+    //@Put(':document')
+    //update(@Param('document') document: number, @Body() updateUserDto: CreateUserDto) {
+    //    console.log(updateUserDto);
+    //    return this.userService.update(document, updateUserDto);
+    //}
 
-    @Delete(':document')
-    async delete(@Param('document') document: number) {
-        return this.userService.delete(document); 
+    @Delete(':id')
+    async delete(@Param('id') id: number) {
+        return this.userService.remove(id); 
     }
 }
