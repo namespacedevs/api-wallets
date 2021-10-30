@@ -7,7 +7,6 @@ import {
     Param,
     Body,
 } from "@nestjs/common";
-import { CreateUserDto } from "../dtos/create-user.dto";
 import { UserModel } from "../model/user.model";
 import { UserService } from "../providers/user.service";
 
@@ -39,6 +38,6 @@ export class UserController {
 
     @Delete(':id')
     async delete(@Param('id') id: number) {
-        return this.userService.remove(id); 
+        return this.userService.delete(id); 
     }
 }
