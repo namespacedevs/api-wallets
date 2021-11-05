@@ -13,7 +13,5 @@ export class User {
   email: string;
 
   @Column()
-  document: number;
-
-  
+  document: string; 
 }
