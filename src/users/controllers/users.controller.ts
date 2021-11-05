@@ -7,33 +7,33 @@ import {
     Param,
     Body,
 } from "@nestjs/common";
-import { CreateUserDto } from "../dtos/create-user.dto";
-import { UserModel } from "../model/user.model";
-import { UserService } from "../providers/user.service";
-import { UpdateUserDto } from "../dtos/update-user.dto";
+import { CreateUsersDto } from "../dtos/create-users.dto";
+import { UsersModel } from "../model/users.model";
+import { UsersService } from "../providers/users.service";
+import { UpdateUsersDto } from "../dtos/update-users.dto";
 
 @Controller('v1/users')
-export class UserController {
+export class UsersController {
 
     constructor(
-        private userService: UserService
+        private userService: UsersService
     ) { }
 
     @Get()
-    findAll(): Promise<UserModel[]> {
+    findAll(): Promise<UsersModel[]> {
         return this.userService.findAll();
     }
     @Get(':id')
-    findOne(@Param('id') id: number): Promise<UserModel> {
+    findOne(@Param('id') id: number): Promise<UsersModel> {
         return this.userService.findOne(id);
     }
     @Post()
-    async create(@Body() createDto: CreateUserDto) {
+    async create(@Body() createDto: CreateUsersDto) {
         return this.userService.createDto(createDto);
     }
 
     @Put(':id')
-    async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    async update(@Param('id') id: number, @Body() updateUserDto: UpdateUsersDto) {
         return this.userService.updateDto(id, updateUserDto);
     }
 
