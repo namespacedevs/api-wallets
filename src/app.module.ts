@@ -4,11 +4,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users/users.entity';
+import { WalletsModule } from './wallets/wallets.module';
+import { Wallet } from './wallets/wallets.entity';
 
 
 @Module({
   imports: [
     UsersModule,
+    WalletsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -16,9 +19,10 @@ import { Users } from './users/users.entity';
       username: 'root',
       password: '',
       database: 'api_wallets',
-      entities: [Users],
+      entities: [Users, Wallet],
       synchronize: true,
-    }),],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
