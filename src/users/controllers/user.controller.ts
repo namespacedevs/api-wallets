@@ -7,6 +7,7 @@ import {
     Param,
     Body,
 } from "@nestjs/common";
+import { CreateUserDto } from "../dtos/create-user.dto";
 import { UserModel } from "../model/user.model";
 import { UserService } from "../providers/user.service";
 
@@ -25,10 +26,10 @@ export class UserController {
     async findOne(@Param('id') id: number): Promise<UserModel> {
         return this.userService.findOne(id);
     }
-    //@Post()
-    //create(@Body() createDto: CreateUserDto) {
-    //    return this.userService.create(createDto);
-    // }
+    @Post()
+    create(@Body() createDto: CreateUserDto) {
+        return this.userService.createDto(createDto);
+    }
 
     //@Put(':document')
     //update(@Param('document') document: number, @Body() updateUserDto: CreateUserDto) {
@@ -38,6 +39,6 @@ export class UserController {
 
     @Delete(':id')
     async delete(@Param('id') id: number) {
-        return this.userService.delete(id); 
+        return this.userService.delete(id);
     }
 }
