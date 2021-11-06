@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Users } from './users/users.entity';
+import { User } from './users/users.entity';
 import { WalletsModule } from './wallets/wallets.module';
 import { Wallet } from './wallets/wallets.entity';
 
@@ -19,7 +19,7 @@ import { Wallet } from './wallets/wallets.entity';
       username: 'root',
       password: '',
       database: 'api_wallets',
-      entities: [Users, Wallet],
+      entities: [User, Wallet],
       synchronize: true,
     }),
   ],
