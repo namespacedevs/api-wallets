@@ -11,7 +11,7 @@ import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersModel } from "../model/users.model";
 import { UsersService } from "../providers/users.service";
 import { UpdateUsersDto } from "../dtos/update-users.dto";
-import { Users } from "../users.entity";
+import { User } from "../users.entity";
 
 @Controller('v1/users')
 export class UsersController {
@@ -21,11 +21,11 @@ export class UsersController {
     ) { }
 
     @Get()
-    findAll(): Promise<Users[]> {
+    findAll(): Promise<User[]> {
         return this.userService.findAll();
     }
     @Get(':id')
-    findOne(@Param('id') id: number): Promise<Users> {
+    findOne(@Param('id') id: number): Promise<User> {
         return this.userService.findOne(id);
     }
     @Post()
