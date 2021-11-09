@@ -20,11 +20,11 @@ export class UsersService {
     findOne(id: number): Promise<User> {
         return this.usersRepository.findOne(id);
     }
-    createDto(createUserDto: CreateUsersDto){
-        return this.usersRepository.insert(createUserDto);
+    create(create: CreateUsersDto){
+        return this.usersRepository.create(create);
     }
-    updateDto(@Param('id') id: number,  updateUserDto: UpdateUsersDto) {
-        return this.usersRepository.update(id, updateUserDto);
+    update(@Param('id') id: number,  update: UpdateUsersDto) {
+        return this.usersRepository.update(id, update);
     }
 
     async delete(id: number): Promise<void> {
