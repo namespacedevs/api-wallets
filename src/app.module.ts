@@ -6,12 +6,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/users.entity';
 import { WalletsModule } from './wallets/wallets.module';
 import { Wallet } from './wallets/wallets.entity';
+import { Asset } from './assets/assets.entity';
+import { AssetsModule } from './assets/assets.module';
 
 
 @Module({
   imports: [
     UsersModule,
     WalletsModule,
+    AssetsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -19,7 +22,7 @@ import { Wallet } from './wallets/wallets.entity';
       username: 'root',
       password: '',
       database: 'api_wallets',
-      entities: [User, Wallet],
+      entities: [User, Wallet, Asset],
       synchronize: true,
     }),
   ],
