@@ -19,11 +19,11 @@ export class WalletsService {
     findOne(id: number): Promise<Wallet> {
         return this.walletsRepository.findOne(id);
     }
-    create(createWalletsDto: CreateWalletDto) {
-        return this.walletsRepository.insert(createWalletsDto);
+    create(create: CreateWalletDto) {
+        return this.walletsRepository.create(create);
     }
-    update(@Param('id') id: number, updateWalletDto: UpdateWalletDto) {
-        return this.walletsRepository.update(id, updateWalletDto);
+    update(@Param('id') id: number, update: UpdateWalletDto) {
+        return this.walletsRepository.update(id, update);
     }
 
     async delete(id: number): Promise<void> {
