@@ -8,7 +8,6 @@ import {
     Body,
 } from "@nestjs/common";
 import { CreateUsersDto } from "../dtos/create-users.dto";
-import { UsersModel } from "../model/users.model";
 import { UsersService } from "../providers/users.service";
 import { UpdateUsersDto } from "../dtos/update-users.dto";
 import { User } from "../users.entity";
@@ -29,13 +28,13 @@ export class UsersController {
         return this.userService.findOne(id);
     }
     @Post()
-    async create(@Body() createDto: CreateUsersDto) {
-        return this.userService.createDto(createDto);
+    async create(@Body() create: CreateUsersDto) {
+        return this.userService.create(create);
     }
 
     @Put(':id')
-    async update(@Param('id') id: number, @Body() updateUserDto: UpdateUsersDto) {
-        return this.userService.updateDto(id, updateUserDto);
+    async update(@Param('id') id: number, @Body() update: UpdateUsersDto) {
+        return this.userService.update(id, update);
     }
 
     @Delete(':id')
