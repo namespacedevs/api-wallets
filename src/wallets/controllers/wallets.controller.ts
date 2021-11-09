@@ -29,12 +29,12 @@ export class WalletsController {
     return this.walletsService.findOne(id);
   }
   @Post()
-  async create(@Body() createWalletDto: CreateWalletDto) {
-    return this.walletsService.create(createWalletDto);
+  async create(@Body() create: CreateWalletDto) {
+    return this.walletsService.create(create);
   }
   @Put(':id')
-  async update(@Param('id') id: number, @Body() updateWalletDto: UpdateWalletDto) {
-    return this.walletsService.update(id, updateWalletDto);
+  async update(@Param('id') id: number, @Body() update: UpdateWalletDto) {
+    return this.walletsService.update(id, update);
   }
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<void> {
