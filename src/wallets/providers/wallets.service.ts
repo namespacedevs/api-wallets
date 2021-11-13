@@ -20,7 +20,7 @@ export class WalletsService {
         return this.walletsRepository.findOne(id);
     }
     create(create: CreateWalletDto) {
-        return this.walletsRepository.create(create);
+        return this.walletsRepository.insert(create);
     }
     update(@Param('id') id: number, update: UpdateWalletDto) {
         return this.walletsRepository.update(id, update);
