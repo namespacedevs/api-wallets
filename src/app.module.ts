@@ -1,13 +1,14 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
+import { AppController } from './app.controller';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
 import { User } from './users/users.entity';
 import { WalletsModule } from './wallets/wallets.module';
 import { Wallet } from './wallets/wallets.entity';
-import { Asset } from './assets/assets.entity';
 import { AssetsModule } from './assets/assets.module';
+import { Asset } from './assets/assets.entity';
+
 
 
 @Module({
