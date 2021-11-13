@@ -21,7 +21,7 @@ export class UsersService {
         return this.usersRepository.findOne(id);
     }
     create(create: CreateUsersDto){
-        return this.usersRepository.create(create);
+        return this.usersRepository.insert(create);
     }
     update(@Param('id') id: number,  update: UpdateUsersDto) {
         return this.usersRepository.update(id, update);
