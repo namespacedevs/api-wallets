@@ -22,7 +22,7 @@ export class AssetsService {
         return this.assetsRepository.findOne(id);
     }
     create(create: CreateAssetDto){
-        return this.assetsRepository.create(create);
+        return this.assetsRepository.insert(create);
     }
     update(@Param('id') id: number,  update: UpdateAssetDto) {
         return this.assetsRepository.update(id, update);
