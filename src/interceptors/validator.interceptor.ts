@@ -8,6 +8,7 @@ import {
   } from '@nestjs/common';
   import { Observable } from 'rxjs';
 import { Contract } from 'src/users/contracts/contract';
+import { Result } from 'src/users/entities/result.entiry';
   
   
   @Injectable()
@@ -18,6 +19,12 @@ import { Contract } from 'src/users/contracts/contract';
       const body = context.switchToHttp().getRequest().body;
       const valid = this.contract.validate(body);
 
+      if (!valid) {
+        throw new HttpException(
+          new Result('Algo saiu errado!', false, null, this.contract.errors),
+          HttpStatus.BAD_REQUEST,
+        );
+      }
   
       return next.handle();
     }
