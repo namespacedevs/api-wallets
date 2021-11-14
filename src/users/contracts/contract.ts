@@ -1,5 +1,5 @@
 export interface Contract{
-    erros: any[];
+    errors: any[];
     validate(entity: any): boolean;
     
 }
