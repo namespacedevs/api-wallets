@@ -6,11 +6,14 @@ import {
     Post,
     Param,
     Body,
+    UseInterceptors,
 } from "@nestjs/common";
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersService } from "../providers/users.service";
 import { UpdateUsersDto } from "../dtos/update-users.dto";
 import { User } from "../users.entity";
+import { ValidatorInterceptor } from "src/interceptors/validator.interceptor";
+import { UserContract } from "../contracts/users.contract";
 
 @Controller('v1/users')
 export class UsersController {
@@ -28,6 +31,7 @@ export class UsersController {
         return this.userService.findOne(id);
     }
     @Post()
+    @UseInterceptors(new ValidatorInterceptor(new UserContract()))
     async create(@Body() create: CreateUsersDto) {
         return this.userService.create(create);
     }
