@@ -7,7 +7,7 @@ import {
     Param,
     Body,
 } from "@nestjs/common";
-import { Asset } from "../assets.entity";
+import { Asset } from "../entities/assets.entity";
 import { CreateAssetDto } from "../dtos/create-asset.dto";
 import { UpdateAssetDto } from "../dtos/update-asset.dto";
 import { AssetsService } from "../providers/assets.service";
