@@ -14,9 +14,7 @@ export class AssetsService {
     ) { }
 
     findAll() {
-        console.log(this.assetsRepository.find());
         return this.assetsRepository.find();
-
     }
     findOne(id: number): Promise<Asset> {
         return this.assetsRepository.findOne(id);
