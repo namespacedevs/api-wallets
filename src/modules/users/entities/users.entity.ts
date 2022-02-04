@@ -16,6 +16,6 @@ export class User {
   @Column()
   document: string;
   
-  @OneToMany(type => Wallet, wallets => wallets.user)
+  @OneToMany(() => Wallet, wallets => wallets.user)
   wallets: Wallet[];
 }
