@@ -7,8 +7,8 @@ import {
     NestInterceptor,
   } from '@nestjs/common';
   import { Observable } from 'rxjs';
-import { Contract } from 'src/utils/contracts/contract';
-import { Result } from 'src/utils/entities/result.entity';
+import { Contract } from 'src/shared/contracts/contract';
+import { Result } from 'src/shared/entities/result.entity';
   
   
   @Injectable()
