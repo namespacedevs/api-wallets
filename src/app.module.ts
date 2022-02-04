@@ -2,19 +2,18 @@ import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
-import { User } from './users/users.entity';
-import { WalletsModule } from './wallets/wallets.module';
-import { Wallet } from './wallets/wallets.entity';
-import { AssetsModule } from './assets/assets.module';
-import { Asset } from './assets/assets.entity';
+import { UsersModule } from './modules/users/users.module';
+import { Wallet } from './modules/wallets/wallets.entity';
+import { AssetsModule } from './modules/assets/assets.module';
+import { Asset } from './modules/assets/entities/assets.entity';
+import { User } from './modules/users/entities/users.entity';
 
 
 
 @Module({
   imports: [
     UsersModule,
-    WalletsModule,
+    AssetsModule,
     AssetsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',

@@ -11,7 +11,7 @@ import {
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersService } from "../providers/users.service";
 import { UpdateUsersDto } from "../dtos/update-users.dto";
-import { User } from "../users.entity";
+import { User } from "../entities/users.entity";
 import { ValidatorInterceptor } from "src/interceptors/validator.interceptor";
 import { UserContract } from "../contracts/users.contract";
 

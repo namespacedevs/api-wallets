@@ -1,7 +1,7 @@
 import { Injectable, Param } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Asset } from "../assets.entity";
+import { Asset } from "../entities/assets.entity";
 import { CreateAssetDto } from "../dtos/create-asset.dto";
 import { UpdateAssetDto } from "../dtos/update-asset.dto";
 
