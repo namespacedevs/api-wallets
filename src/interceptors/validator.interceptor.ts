@@ -7,7 +7,7 @@ import {
     NestInterceptor,
   } from '@nestjs/common';
   import { Observable } from 'rxjs';
-import { Contract } from 'src/modules/users/contracts/contract';
+import { Contract } from 'src/utils/contracts/contract';
 import { Result } from 'src/utils/entities/result.entity';
   
   

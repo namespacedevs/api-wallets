@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Flunt } from "src/utils/flunt";
 import { User } from "../entities/users.entity";
 
-import { Contract } from "./contract";
+import { Contract } from "../../../utils/contracts/contract";
 
 @Injectable()
 export class UserContract implements Contract {
