@@ -11,7 +11,7 @@ import {
 import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
 import { WalletsService } from '../providers/wallets.service';
-import { Wallet } from '../wallets.entity';
+import { Wallet } from '../entities/wallets.entity';
 
 @Controller('v1/wallets')
 export class WalletsController {

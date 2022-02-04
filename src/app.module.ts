@@ -3,11 +3,11 @@ import { AppController } from './app.controller';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/users/users.module';
-import { Wallet } from './modules/wallets/wallets.entity';
+import { Wallet } from './modules/wallets/entities/wallets.entity';
 import { AssetsModule } from './modules/assets/assets.module';
 import { Asset } from './modules/assets/entities/assets.entity';
 import { User } from './modules/users/entities/users.entity';
-
+import 'dotenv/config'
 
 
 @Module({
@@ -17,12 +17,13 @@ import { User } from './modules/users/entities/users.entity';
     AssetsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'api_wallets',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PW,
+      database: process.env.DB_NAME,
       entities: [User, Wallet, Asset],
+      autoLoadEntities: true,
       synchronize: true,
     }),
   ],
