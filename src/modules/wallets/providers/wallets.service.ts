@@ -16,17 +16,17 @@ export class WalletsService {
         return await this.walletsRepository.find();
     }
 
-    findOne(id: number): Promise<Wallet> {
-        return this.walletsRepository.findOne(id);
+    async findOne(id: number): Promise<Wallet> {
+        return await this.walletsRepository.findOne(id);
     }
-    create(create: CreateWalletDto) {
-        return this.walletsRepository.insert(create);
+    async create(model: CreateWalletDto) {
+        return await this.walletsRepository.save(model);
     }
-    update(@Param('id') id: number, update: UpdateWalletDto) {
-        return this.walletsRepository.update(id, update);
+   async update(@Param('id') id: number, update: UpdateWalletDto) {
+        return await this.walletsRepository.update(id, update);
     }
 
-    async delete(id: number): Promise<void> {
-        await this.walletsRepository.delete(id);
+    async delete(id: number) {
+        return await this.walletsRepository.delete(id);
     }
 }

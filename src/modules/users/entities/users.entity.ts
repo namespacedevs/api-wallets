@@ -2,7 +2,7 @@
 import { Wallet } from 'src/modules/wallets/entities/wallets.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-@Entity()
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -10,12 +10,15 @@ export class User {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ unique: true })
   document: string;
+
+  @Column()
+  password: string;
   
-  @OneToMany(() => Wallet, wallets => wallets.user)
+  @OneToMany(() => Wallet, wallets => wallets.userId)
   wallets: Wallet[];
 }

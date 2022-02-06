@@ -1,19 +1,12 @@
-import {
-    Controller,
-    Delete,
-    Get,
-    Put,
-    Post,
-    Param,
-    Body,
-    UseInterceptors,
-} from "@nestjs/common";
+import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus } from "@nestjs/common";
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersService } from "../providers/users.service";
-import { UpdateUsersDto } from "../dtos/update-users.dto";
+import { UpdateUserDto } from "../dtos/update-users.dto";
 import { User } from "../entities/users.entity";
 import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
-import { UserContract } from "../contracts/users.contract";
+import { CreateUserContract } from "../contracts/create-user.contract";
+import { Result } from "src/shared/entities/result.entity";
+import { UpdateUserContract } from "../contracts/update-user.controct";
 
 @Controller('v1/users')
 export class UsersController {
@@ -31,14 +24,27 @@ export class UsersController {
         return this.userService.findOne(id);
     }
     @Post()
-    @UseInterceptors(new ValidatorInterceptor(new UserContract()))
-    async create(@Body() create: CreateUsersDto) {
-        return this.userService.create(create);
+    @UseInterceptors(new ValidatorInterceptor(new CreateUserContract()))
+    async create(@Body() model: CreateUsersDto) {
+        try{
+            const newUser = await this.userService.create(model);
+            return new Result('Usuário criado.', true, [newUser.name, newUser.email], null);
+        }
+        catch(error){
+            throw new HttpException(new Result('Email ou CPF já cadastrados.', false, null, error), HttpStatus.BAD_REQUEST); 
+        }
     }
 
     @Put(':id')
-    async update(@Param('id') id: number, @Body() update: UpdateUsersDto) {
-        return this.userService.update(id, update);
+    @UseInterceptors(new ValidatorInterceptor(new UpdateUserContract()))
+    async update(@Param('id') id: number, @Body() update: UpdateUserDto) {
+        try{
+            const updateUser = await this.userService.update(id, update);
+            return new Result('Usuário criado.', true, updateUser, null);
+        }
+        catch(error){
+            throw new HttpException(new Result('Email ou CPF já cadastrados.', false, null, error), HttpStatus.BAD_REQUEST); 
+        }
     }
 
     @Delete(':id')
