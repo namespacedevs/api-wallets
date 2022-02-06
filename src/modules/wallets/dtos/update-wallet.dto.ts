@@ -1,4 +1,6 @@
 export class UpdateWalletDto {
-    name: string;
-  }
+  constructor(
+    public name: string,
+  ){}
+}
   

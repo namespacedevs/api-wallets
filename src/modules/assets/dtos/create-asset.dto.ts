@@ -1,5 +1,7 @@
 export class CreateAssetDto {
-    name: string;
-    price: string;
-  }
+  constructor(
+    public name: string,
+    public price: string,
+  ){}
+}
   

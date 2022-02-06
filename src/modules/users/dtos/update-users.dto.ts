@@ -1,5 +1,5 @@
-export class UpdateUsersDto{
-    name: string;
-    email: string;
-    document: string;
+export class UpdateUserDto{
+    constructor(
+        public name: string,
+    ){}
 }

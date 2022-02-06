@@ -1,5 +1,8 @@
 export class CreateUsersDto{
-    name: string;
-    email: string;
-    document: string;
+    constructor(
+        public name: string,
+        public email: string,
+        public document: string,
+        public password: string,
+    ){}
 }

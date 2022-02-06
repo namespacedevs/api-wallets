@@ -1,5 +1,9 @@
+import { User } from "src/modules/users/entities/users.entity";
 
 export class CreateWalletDto {
-    name: string;
+    constructor(
+      public name: string,
+      public userId: User,
+    ){}
   }
   

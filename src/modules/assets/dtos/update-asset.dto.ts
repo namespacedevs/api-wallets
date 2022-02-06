@@ -1,4 +1,6 @@
 export class UpdateAssetDto {
-    name: string;
-    price: string;
-  }
+  constructor(
+    public name: string,
+    public price: string
+  ){}
+}
