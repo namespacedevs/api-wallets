@@ -8,13 +8,14 @@ import { AssetsModule } from './modules/assets/assets.module';
 import { Asset } from './modules/assets/entities/assets.entity';
 import { User } from './modules/users/entities/users.entity';
 import 'dotenv/config'
+import { WalletsModule } from './modules/wallets/wallets.module';
 
 
 @Module({
   imports: [
     UsersModule,
     AssetsModule,
-    AssetsModule,
+    WalletsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
