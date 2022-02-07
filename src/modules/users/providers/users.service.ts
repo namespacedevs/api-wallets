@@ -31,4 +31,8 @@ export class UsersService {
     async delete(id: number) {
         await this.usersRepository.delete(id);
     }
+
+    async login(username, password): Promise<User> {
+        return await this.usersRepository.findOne({ document: username })
+    }
 }
