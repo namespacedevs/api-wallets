@@ -1,6 +1,6 @@
 export class UpdateAssetDto {
   constructor(
     public name: string,
-    public price: string
+    public price: number,
   ){}
 }

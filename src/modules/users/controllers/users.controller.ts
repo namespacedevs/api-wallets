@@ -6,7 +6,7 @@ import { User } from "../entities/users.entity";
 import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
 import { CreateUserContract } from "../contracts/create-user.contract";
 import { Result } from "src/shared/entities/result.entity";
-import { UpdateUserContract } from "../contracts/update-user.controct";
+import { UpdateUserContract } from "../contracts/update-user.contract";
 
 @Controller('v1/users')
 export class UsersController {

@@ -1,9 +1,9 @@
 import { Injectable, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
 import { Wallet } from '../entities/wallets.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class WalletsService {

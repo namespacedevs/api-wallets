@@ -1,14 +1,14 @@
-import { AppService } from './app.service';
-import { AppController } from './app.controller';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
 import { UsersModule } from './modules/users/users.module';
-import { Wallet } from './modules/wallets/entities/wallets.entity';
-import { AssetsModule } from './modules/assets/assets.module';
-import { Asset } from './modules/assets/entities/assets.entity';
-import { User } from './modules/users/entities/users.entity';
-import 'dotenv/config'
 import { WalletsModule } from './modules/wallets/wallets.module';
+import { AssetsModule } from './modules/assets/assets.module';
+import { User } from './modules/users/entities/users.entity';
+import { Wallet } from './modules/wallets/entities/wallets.entity';
+import { Asset } from './modules/assets/entities/assets.entity';
+import 'dotenv/config';
 
 
 @Module({

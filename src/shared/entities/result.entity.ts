@@ -4,7 +4,6 @@ export class Result {
         public success: boolean,
         public data: any,
         public errors: any,
-    ) {
-    
+    ) { 
     }
 }

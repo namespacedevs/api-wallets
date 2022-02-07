@@ -16,12 +16,15 @@ export class AssetsService {
     findAll() {
         return this.assetsRepository.find();
     }
+
     findOne(id: number): Promise<Asset> {
         return this.assetsRepository.findOne(id);
     }
+
     create(create: CreateAssetDto){
-        return this.assetsRepository.insert(create);
+        return this.assetsRepository.save(create);
     }
+
     update(@Param('id') id: number,  update: UpdateAssetDto) {
         return this.assetsRepository.update(id, update);
     }

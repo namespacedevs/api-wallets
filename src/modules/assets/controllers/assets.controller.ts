@@ -1,12 +1,4 @@
-import {
-    Controller,
-    Delete,
-    Get,
-    Put,
-    Post,
-    Param,
-    Body,
-} from "@nestjs/common";
+import { Controller, Delete, Get, Put, Post, Param, Body } from "@nestjs/common";
 import { Asset } from "../entities/assets.entity";
 import { CreateAssetDto } from "../dtos/create-asset.dto";
 import { UpdateAssetDto } from "../dtos/update-asset.dto";
@@ -23,10 +15,12 @@ export class AssetsController {
     findAll(): Promise<Asset[]> {
         return this.assetsService.findAll();
     }
+    
     @Get(':id')
     findOne(@Param('id') id: number): Promise<Asset> {
         return this.assetsService.findOne(id);
     }
+
     @Post()
     async create(@Body() create: CreateAssetDto) {
         return this.assetsService.create(create);

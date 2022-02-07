@@ -9,5 +9,5 @@ export class Asset {
   name: string;
   
   @Column()
-  price: string;
+  price: number;
 }
