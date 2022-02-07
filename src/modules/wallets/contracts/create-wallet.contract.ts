@@ -11,7 +11,6 @@ export class CreateWalletContract implements Contract{
         const flunt = new Flunt();
 
         flunt.isRequired(model.name, 'O nome da carteira é obrigatório.');
-        flunt.isRequired(model.userId, 'O documento do usuário é obrigatório.')
 
         this.errors = flunt.errors;
         
