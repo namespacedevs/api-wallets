@@ -5,7 +5,7 @@ import { UpdateUserDto } from "../dtos/update-users.dto";
 import { User } from "../entities/users.entity";
 import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
 import { CreateUserContract } from "../contracts/create-user.contract";
-import { Result } from "src/shared/entities/result.entity";
+import { Result } from "src/shared/dtos/result.dto";
 import { UpdateUserContract } from "../contracts/update-user.contract";
 
 @Controller('v1/users')

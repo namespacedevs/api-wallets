@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, HttpException, HttpStatus, Injectable, NestInterceptor } from '@nestjs/common';
 import { Contract } from 'src/shared/contracts/contract';
-import { Result } from 'src/shared/entities/result.entity';
+import { Result } from 'src/shared/dtos/result.dto';
 import { Observable } from 'rxjs';
   
   
