@@ -1,11 +1,13 @@
 
-import { Body, Controller, Get, Param, Post, Put, Delete, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Delete, UseInterceptors, HttpException, HttpStatus, Request, UseGuards } from '@nestjs/common';
 import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
 import { WalletsService } from '../providers/wallets.service';
 import { ValidatorInterceptor } from 'src/shared/interceptors/validator.interceptor';
 import { CreateWalletContract } from '../contracts/create-wallet.contract';
 import { Result } from 'src/shared/dtos/result.dto';
+import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('v1/wallets')
 export class WalletsController {
@@ -38,9 +40,12 @@ export class WalletsController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(new ValidatorInterceptor(new CreateWalletContract))
-  async create(@Body() model: CreateWalletDto) {
+  async create(@Request() req, @Body() model: CreateWalletDto) {
+
     try{
+      model.userId = req.user.id
       const newWallet = await this.walletsService.create(model);
       return new Result('Carteria criada com sucesso.', true, newWallet, null);
     }

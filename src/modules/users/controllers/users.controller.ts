@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus, UseGuards } from "@nestjs/common";
+import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus, UseGuards, Request } from "@nestjs/common";
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersService } from "../providers/users.service";
 import { UpdateUserDto } from "../dtos/update-users.dto";
@@ -83,7 +83,7 @@ export class UsersController {
         if(!user)
         throw new HttpException(new Result('Usuário ou senha invalido!', null, false, null), HttpStatus.UNAUTHORIZED);
     
-        const token = await this.authService.createToken(user.document)
+        const token = await this.authService.createToken(user.id)
         return new Result(null, true, token, null);
     }
 }
