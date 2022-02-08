@@ -1,21 +1,25 @@
-import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus } from "@nestjs/common";
+import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus, UseGuards } from "@nestjs/common";
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UsersService } from "../providers/users.service";
 import { UpdateUserDto } from "../dtos/update-users.dto";
-import { User } from "../entities/users.entity";
 import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
 import { CreateUserContract } from "../contracts/create-user.contract";
 import { Result } from "src/shared/dtos/result.dto";
 import { UpdateUserContract } from "../contracts/update-user.contract";
+import { AuthService } from "src/shared/providers/auth.service";
+import { LoginDto } from "src/modules/users/dtos/login.dto";
+import { JwtAuthGuard } from "src/shared/guards/auth.guard";
 
 @Controller('v1/users')
 export class UsersController {
 
     constructor(
-        private usersService: UsersService
+        private readonly usersService: UsersService,
+        private readonly authService: AuthService,
     ) { }
 
     @Get()
+    @UseGuards(JwtAuthGuard)
     async findAll() { 
         try{
             const users = await this.usersService.findAll();
@@ -70,5 +74,16 @@ export class UsersController {
         catch(error){
             throw new HttpException(new Result('Não foi possivel deletar o usuário.', false, null, error), HttpStatus.BAD_REQUEST); 
         }
+    }
+
+    @Post('login')
+    async login(@Body() model: LoginDto): Promise <any>{
+        const user = await this.usersService.login(model.document, model.password);
+    
+        if(!user)
+        throw new HttpException(new Result('Usuário ou senha invalido!', null, false, null), HttpStatus.UNAUTHORIZED);
+    
+        const token = await this.authService.createToken(user.document)
+        return new Result(null, true, token, null);
     }
 }
