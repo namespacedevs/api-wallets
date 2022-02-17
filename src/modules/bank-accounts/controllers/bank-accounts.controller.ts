@@ -7,11 +7,6 @@ import { BankAccountsService } from '../providers/bank-accounts.service';
 export class BankAccountsController {
   constructor(private readonly bankAccountsService: BankAccountsService) {}
 
-  @Post()
-  create(@Body() createBankAccountDto: CreateBankAccountDto) {
-    return this.bankAccountsService.create(createBankAccountDto);
-  }
-
   @Get()
   findAll() {
     return this.bankAccountsService.findAll();
@@ -20,6 +15,11 @@ export class BankAccountsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bankAccountsService.findOne(+id);
+  }
+  
+  @Post()
+  create(@Body() createBankAccountDto: CreateBankAccountDto) {
+    return this.bankAccountsService.create(createBankAccountDto);
   }
 
   @Patch(':id')
