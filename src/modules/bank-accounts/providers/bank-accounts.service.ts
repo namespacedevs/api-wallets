@@ -12,23 +12,23 @@ export class BankAccountsService {
     private readonly bankAccountRepository: Repository<BankAccount>
   ){}
 
-  create(createBankAccountDto: CreateBankAccountDto) {
-    return 'This action adds a new bankAccount';
+  async findAll() {
+    return await this.bankAccountRepository.find();
   }
 
-  findAll() {
-    return `This action returns all bankAccounts`;
+  async findOne(id: number) {
+    return await this.bankAccountRepository.findOne(id);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bankAccount`;
+  async create(createBankAccountDto: CreateBankAccountDto) {
+    return await this.bankAccountRepository.save(createBankAccountDto);
   }
 
   update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
     return `This action updates a #${id} bankAccount`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bankAccount`;
+  async remove(id: number) {
+    return await this.bankAccountRepository.delete(id);
   }
 }
