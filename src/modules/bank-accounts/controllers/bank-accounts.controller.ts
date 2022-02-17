@@ -3,7 +3,7 @@ import { CreateBankAccountDto } from '../dtos/create-bank-account.dto';
 import { UpdateBankAccountDto } from '../dtos/update-bank-account.dto';
 import { BankAccountsService } from '../providers/bank-accounts.service';
 
-@Controller('bank-accounts')
+@Controller('v1/bank-accounts')
 export class BankAccountsController {
   constructor(private readonly bankAccountsService: BankAccountsService) {}
 
