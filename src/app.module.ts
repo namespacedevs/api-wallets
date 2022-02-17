@@ -8,6 +8,7 @@ import { AssetsModule } from './modules/assets/assets.module';
 import { User } from './modules/users/entities/users.entity';
 import { Wallet } from './modules/wallets/entities/wallets.entity';
 import { Asset } from './modules/assets/entities/assets.entity';
+import { BankAccountsModule } from './modules/bank-accounts/bank-accounts.module';
 import 'dotenv/config';
 
 
@@ -27,6 +28,7 @@ import 'dotenv/config';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    BankAccountsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
