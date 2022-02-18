@@ -1,4 +1,4 @@
-import { User } from "src/modules/users/entities/users.entity";
+import { User } from "src/users/entities/users.entity";
 
 export class CreateWalletDto {
     constructor(
