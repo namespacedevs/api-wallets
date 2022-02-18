@@ -4,6 +4,7 @@ import { WalletsController } from "./controllers/wallets.controller";
 import { Wallet } from "./entities/wallets.entity";
 import { WalletsService } from "./providers/wallets.service";
 
+
 @Module({
     imports: [TypeOrmModule.forFeature([Wallet])],
     controllers: [WalletsController],

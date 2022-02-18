@@ -1,14 +1,15 @@
-import { Controller, Delete, Get, Put, Post, Param, Body, UseInterceptors, HttpException, HttpStatus, UseGuards, Request } from "@nestjs/common";
-import { CreateUsersDto } from "../dtos/create-users.dto";
-import { UsersService } from "../providers/users.service";
-import { UpdateUserDto } from "../dtos/update-users.dto";
-import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
-import { CreateUserContract } from "../contracts/create-user.contract";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseGuards, UseInterceptors } from "@nestjs/common";
 import { Result } from "src/shared/dtos/result.dto";
-import { UpdateUserContract } from "../contracts/update-user.contract";
-import { AuthService } from "src/shared/providers/auth.service";
-import { LoginDto } from "src/modules/users/dtos/login.dto";
 import { JwtAuthGuard } from "src/shared/guards/auth.guard";
+import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
+import { AuthService } from "src/shared/providers/auth.service";
+import { CreateUserContract } from "../contracts/create-user.contract";
+import { UpdateUserContract } from "../contracts/update-user.contract";
+import { CreateUsersDto } from "../dtos/create-users.dto";
+import { LoginDto } from "../dtos/login.dto";
+import { UpdateUserDto } from "../dtos/update-users.dto";
+import { UsersService } from "../providers/users.service";
+
 
 @Controller('v1/users')
 export class UsersController {

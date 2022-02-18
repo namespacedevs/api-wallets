@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Wallet } from 'src/modules/wallets/entities/wallets.entity';
-import { BankAccount } from 'src/modules/bank-accounts/entities/bank-account.entity';
+import { Wallet } from 'src/wallets/entities/wallets.entity';
+import { BankAccount } from 'src/bank-accounts/entities/bank-account.entity';
 
 @Entity('users')
 export class User {
@@ -23,5 +23,5 @@ export class User {
   wallets: Wallet[];
 
   @OneToMany(() => BankAccount, bankAccount => bankAccount.userId)
-  bankAccount: BankAccount[];
+  bankAccounts: BankAccount[];
 }
