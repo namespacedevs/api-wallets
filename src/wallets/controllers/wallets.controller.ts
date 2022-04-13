@@ -1,5 +1,5 @@
 
-import { Body, Controller, Get, Param, Post, Put, Delete, UseInterceptors, HttpException, HttpStatus, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Delete, UseInterceptors, HttpException, HttpStatus, Request, UseGuards, Patch } from '@nestjs/common';
 import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
 import { WalletsService } from '../providers/wallets.service';
@@ -10,6 +10,7 @@ import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('v1/wallets')
+@UseGuards(JwtAuthGuard)
 export class WalletsController {
 
   constructor(
@@ -54,7 +55,7 @@ export class WalletsController {
     }
   }
 
-  @Put(':id')
+  @Patch(':id')
   async update(@Param('id') id: number, @Body() update: UpdateWalletDto) { 
     try{
       const updateWallet = await this.walletsService.update(id, update);
