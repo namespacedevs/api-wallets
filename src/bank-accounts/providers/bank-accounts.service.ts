@@ -24,8 +24,8 @@ export class BankAccountsService {
     return await this.bankAccountRepository.save(createBankAccountDto);
   }
 
-  update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
-    return `This action updates a #${id} bankAccount`;
+  async update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
+    return await this.update(id, updateBankAccountDto) 
   }
 
   async remove(id: number) {
