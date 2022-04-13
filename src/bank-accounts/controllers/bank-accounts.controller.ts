@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
 import { CreateBankAccountDto } from '../dtos/create-bank-account.dto';
 import { UpdateBankAccountDto } from '../dtos/update-bank-account.dto';
 import { BankAccountsService } from '../providers/bank-accounts.service';
 
 @Controller('v1/bank-accounts')
+@UseGuards(JwtAuthGuard)
 export class BankAccountsController {
   constructor(private readonly bankAccountsService: BankAccountsService) {}
 
