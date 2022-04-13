@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common';
+import { Result } from 'src/shared/dtos/result.dto';
 import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
 import { CreateBankAccountDto } from '../dtos/create-bank-account.dto';
 import { UpdateBankAccountDto } from '../dtos/update-bank-account.dto';
@@ -20,8 +21,15 @@ export class BankAccountsController {
   }
   
   @Post()
-  create(@Body() createBankAccountDto: CreateBankAccountDto) {
-    return this.bankAccountsService.create(createBankAccountDto);
+  async create(@Request() req, @Body() createBrakAccountDto: CreateBankAccountDto) {
+    try{
+      createBrakAccountDto.userId = req.user.id
+      const newWallet = await this.bankAccountsService.create(createBrakAccountDto);
+      return new Result('Carteria criada com sucesso.', true, newWallet, null);
+    }
+    catch(error){
+      throw new HttpException(new Result('Não foi possivel criar a carteira.', false, null, error), HttpStatus.BAD_REQUEST);
+    }
   }
 
   @Patch(':id')
