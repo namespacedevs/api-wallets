@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post, Put, UseGuards, UseInterceptors } from "@nestjs/common";
 import { Result } from "src/shared/dtos/result.dto";
 import { JwtAuthGuard } from "src/shared/guards/auth.guard";
 import { ValidatorInterceptor } from "src/shared/interceptors/validator.interceptor";
@@ -32,6 +32,7 @@ export class UsersController {
     }
 
     @Get(':id')
+    @UseGuards(JwtAuthGuard)
     async findOne(@Param('id') id: number){
         try{
             const user = await this.usersService.findOne(id);
@@ -54,7 +55,8 @@ export class UsersController {
         }
     }
 
-    @Put(':id')
+    @Patch(':id')
+    @UseGuards(JwtAuthGuard)
     @UseInterceptors(new ValidatorInterceptor(new UpdateUserContract()))
     async update(@Param('id') id: number, @Body() update: UpdateUserDto) {
         try{
@@ -67,6 +69,7 @@ export class UsersController {
     }
 
     @Delete(':id')
+    @UseGuards(JwtAuthGuard)
     async delete(@Param('id') id: number) {
         try{
             await this.usersService.delete(id);
