@@ -25,7 +25,7 @@ export class BankAccountsService {
   }
 
   async update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
-    return await this.update(id, updateBankAccountDto) 
+    return await this.bankAccountRepository.update(id, updateBankAccountDto) 
   }
 
   async remove(id: number) {
