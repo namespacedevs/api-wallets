@@ -71,3 +71,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## 
+
+<p align="center">
+  <a href="https://codeclimate.com/github/namespacedevs/api-wallets" target="_blank"> <img style="margin-top:10px;" src="https://mma.prnewswire.com/media/1166708/Code_Climate_Logo.jpg?p=facebook" width="500px"></a>
+</p>
