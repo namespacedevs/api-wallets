@@ -27,6 +27,7 @@
     "@nestjs/passport": "^8.1.0",
     "@nestjs/platform-express": "^8.2.6",
     "@nestjs/typeorm": "^8.0.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "mysql2": "^2.3.3",
     "passport": "^0.5.2",
