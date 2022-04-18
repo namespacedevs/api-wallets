@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { AssetsController } from "./controllers/assets.controller";
-import { AssetsService } from './providers/assets.service';
-import { Asset } from './entities/assets.entity';
+import { Asset } from "./entities/assets.entity";
+import { AssetsService } from "./providers/assets.service";
+
 
 @Module({
     imports: [TypeOrmModule.forFeature([Asset])],

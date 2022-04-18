@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, JoinColumn } from 'typeorm';
-import { Asset } from 'src/modules/assets/entities/assets.entity';
-import { User } from 'src/modules/users/entities/users.entity';
+import { Asset } from 'src/assets/entities/assets.entity';
+import { User } from 'src/users/entities/users.entity';
 
 @Entity('wallets')
 export class Wallet {
