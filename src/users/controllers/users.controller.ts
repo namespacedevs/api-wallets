@@ -35,8 +35,18 @@ export class UsersController {
     @UseGuards(JwtAuthGuard)
     async findOne(@Param('id') id: number){
         try{
-            const user = await this.usersService.findOne(id);
-            return new Result('Usuário solicitado.', true, user, null);
+            const idList = []
+            const users = await this.usersService.findAll();
+            for(let i in users){
+                const user = users[i]
+                idList.push(user.id)
+            }
+            const idTest = idList.indexOf(id)
+            if(idTest !== -1){
+                const user = await this.usersService.findOne(id);
+                return new Result('O usuário solicitado', true, user, null);
+            }
+            return new Result('Usuário não encontrado', false, null, null);
         }
         catch(error){
             throw new HttpException(new Result('Não foi possivel listar o usuário.', false, null, error), HttpStatus.BAD_REQUEST);
