@@ -2,8 +2,8 @@ import { Controller, Delete, Get, Put, Post, Param, Body, HttpException, HttpSta
 import { CreateAssetDto } from "../dtos/create-asset.dto";
 import { UpdateAssetDto } from "../dtos/update-asset.dto";
 import { AssetsService } from "../providers/assets.service";
-import { Result } from "src/shared/dtos/result.dto";
-import { JwtAuthGuard } from "src/shared/guards/auth.guard";
+import { Result } from "../../shared/dtos/result.dto";
+import { JwtAuthGuard } from "../../shared/guards/auth.guard";
 
 @Controller('v1/assets')
 @UseGuards(JwtAuthGuard)
