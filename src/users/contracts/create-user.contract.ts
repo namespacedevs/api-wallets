@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Flunt } from "src/utils/flunt";
+import { Flunt } from "../../utils/flunt";
 import { User } from "../entities/users.entity";
 import { Contract } from "../../shared/contracts/contract";
 

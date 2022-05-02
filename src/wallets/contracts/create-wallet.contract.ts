@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { Contract } from "src/shared/contracts/contract";
-import { Flunt } from "src/utils/flunt";
+import { Contract } from "../../shared/contracts/contract";
+import { Flunt } from "../../utils/flunt";
 import { Wallet } from "../entities/wallets.entity";
 
 @Injectable()
