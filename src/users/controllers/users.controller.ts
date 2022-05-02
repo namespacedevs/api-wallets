@@ -41,7 +41,7 @@ export class UsersController {
                 const user = users[i]
                 idList.push(user.id)
             }
-            const idTest = idList.indexOf(id)
+            const idTest = idList.indexOf(+id)
             if(idTest !== -1){
                 const user = await this.usersService.findOne(id);
                 return new Result('O usuário solicitado', true, user, null);
