@@ -1,10 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { Contract } from "../../shared/contracts/contract";
+import { Interface } from "../../shared/interfaces/interface";
+
 import { Flunt } from "../../utils/flunt";
 import { Wallet } from "../entities/wallets.entity";
 
 @Injectable()
-export class CreateWalletContract implements Contract{
+export class CreateWalletInterface implements Interface{
     errors: any[];
 
     validate(model: Wallet): any {

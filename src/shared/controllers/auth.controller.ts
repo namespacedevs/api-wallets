@@ -1,6 +1,6 @@
 import { Controller, Post, Body, HttpException, HttpStatus } from "@nestjs/common";
-import { LoginDto } from "src/users/dtos/login.dto";
-import { UsersService } from "src/users/providers/users.service";
+import { LoginDto } from "../../users/dtos/login.dto";
+import { UsersService } from "../../users/services/users.service";
 import { ResultLogin } from "../dtos/result-login.dto";
 import { Result } from "../dtos/result.dto";
 import { AuthService } from "../providers/auth.service";
