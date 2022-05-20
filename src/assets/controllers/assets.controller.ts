@@ -1,7 +1,7 @@
 import { Controller, Delete, Get, Put, Post, Param, Body, HttpException, HttpStatus, UseGuards } from "@nestjs/common";
 import { CreateAssetDto } from "../dtos/create-asset.dto";
 import { UpdateAssetDto } from "../dtos/update-asset.dto";
-import { AssetsService } from "../providers/assets.service";
+import { AssetsService } from "../services/assets.service";
 import { Result } from "../../shared/dtos/result.dto";
 import { JwtAuthGuard } from "../../shared/guards/auth.guard";
 

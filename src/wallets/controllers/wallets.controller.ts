@@ -2,11 +2,11 @@
 import { Body, Controller, Get, Param, Post, Delete, UseInterceptors, HttpException, HttpStatus, Request, UseGuards, Patch } from '@nestjs/common';
 import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
-import { WalletsService } from '../providers/wallets.service';
-import { ValidatorInterceptor } from 'src/shared/interceptors/validator.interceptor';
-import { CreateWalletContract } from '../contracts/create-wallet.contract';
-import { Result } from 'src/shared/dtos/result.dto';
-import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
+import { WalletsService } from '../services/wallets.service';
+import { ValidatorInterceptor } from '../../shared/interceptors/validator.interceptor';
+import { CreateWalletInterface } from '../interface/create-wallet.interface';
+import { Result } from '../../shared/dtos/result.dto';
+import { JwtAuthGuard } from '../../shared/guards/auth.guard';
 
 @Controller('v1/wallets')
 @UseGuards(JwtAuthGuard)
@@ -41,7 +41,7 @@ export class WalletsController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(new ValidatorInterceptor(new CreateWalletContract))
+  @UseInterceptors(new ValidatorInterceptor(new CreateWalletInterface))
   async create(@Request() req, @Body() model: CreateWalletDto) {
 
     try{

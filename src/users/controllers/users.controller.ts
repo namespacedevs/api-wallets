@@ -2,11 +2,11 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch,
 import { Result } from "../../shared/dtos/result.dto";
 import { JwtAuthGuard } from "../../shared/guards/auth.guard";
 import { ValidatorInterceptor } from "../../shared/interceptors/validator.interceptor";
-import { CreateUserContract } from "../contracts/create-user.contract";
-import { UpdateUserContract } from "../contracts/update-user.contract";
+import { CreateUserInterface } from "../interfaces/create-user.interface";
+import { UpdateUserInterface } from "../interfaces/update-user.interface";
 import { CreateUsersDto } from "../dtos/create-users.dto";
 import { UpdateUserDto } from "../dtos/update-users.dto";
-import { UsersService } from "../providers/users.service";
+import { UsersService } from "../services/users.service";
 
 
 @Controller('v1/users')
@@ -44,7 +44,7 @@ export class UsersController {
     }
 
     @Post()
-    @UseInterceptors(new ValidatorInterceptor(new CreateUserContract()))
+    @UseInterceptors(new ValidatorInterceptor(new CreateUserInterface()))
     async create(@Body() createUser: CreateUsersDto) {
         try {
             const newUser = await this.usersService.create(createUser);
@@ -57,7 +57,7 @@ export class UsersController {
 
     @Patch(':id')
     @UseGuards(JwtAuthGuard)
-    @UseInterceptors(new ValidatorInterceptor(new UpdateUserContract()))
+    @UseInterceptors(new ValidatorInterceptor(new UpdateUserInterface()))
     async update(@Param('id') id: number, @Body() update: UpdateUserDto) {
         try {
             const updateUser = await this.usersService.update(id, update);
