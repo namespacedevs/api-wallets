@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post, Put, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post, UseGuards, UseInterceptors } from "@nestjs/common";
 import { Result } from "../../shared/dtos/result.dto";
 import { JwtAuthGuard } from "../../shared/guards/auth.guard";
 import { ValidatorInterceptor } from "../../shared/interceptors/validator.interceptor";
@@ -6,7 +6,6 @@ import { AuthService } from "../../shared/providers/auth.service";
 import { CreateUserContract } from "../contracts/create-user.contract";
 import { UpdateUserContract } from "../contracts/update-user.contract";
 import { CreateUsersDto } from "../dtos/create-users.dto";
-import { LoginDto } from "../dtos/login.dto";
 import { UpdateUserDto } from "../dtos/update-users.dto";
 import { UsersService } from "../providers/users.service";
 
@@ -16,7 +15,6 @@ export class UsersController {
 
     constructor(
         private readonly usersService: UsersService,
-        private readonly authService: AuthService,
     ) { }
 
     @Get()
@@ -78,16 +76,5 @@ export class UsersController {
         catch(error){
             throw new HttpException(new Result('Não foi possivel deletar o usuário.', false, null, error), HttpStatus.BAD_REQUEST); 
         }
-    }
-
-    @Post('login')
-    async login(@Body() model: LoginDto): Promise <any>{
-        const user = await this.usersService.login(model.document, model.password);
-    
-        if(!user)
-        throw new HttpException(new Result('Usuário ou senha invalido!', null, false, null), HttpStatus.UNAUTHORIZED);
-    
-        const token = await this.authService.createToken(user.id)
-        return new Result(null, true, token, null);
     }
 }
