@@ -4,7 +4,7 @@ import { CreateWalletDto } from '../dtos/create-wallet.dto';
 import { UpdateWalletDto } from '../dtos/update-wallet.dto';
 import { WalletsService } from '../services/wallets.service';
 import { ValidatorInterceptor } from '../../shared/interceptors/validator.interceptor';
-import { CreateWalletInterface } from '../interface/create-wallet.interface';
+import { CreateWalletInterface } from '../interfaces/create-wallet.interface';
 import { Result } from '../../shared/dtos/result.dto';
 import { JwtAuthGuard } from '../../shared/guards/auth.guard';
 
