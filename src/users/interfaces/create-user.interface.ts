@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { Interface } from "../../shared/interfaces/interface";
+import { ValidatorInterface } from "../../shared/interfaces/validator.interface";
 import { Flunt } from "../../utils/flunt";
 import { User } from "../entities/users.entity";
 
 
 @Injectable()
-export class CreateUserInterface implements Interface {
+export class CreateUserInterface implements ValidatorInterface {
     errors: any[];
     validate(entity: User): boolean {
         const flunt = new Flunt();
