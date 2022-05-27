@@ -6,6 +6,7 @@ import { User } from "../entities/users.entity";
 
 @Injectable()
 export class CreateUserInterface implements ValidatorInterface {
+
     errors: any[];
     validate(entity: User): boolean {
         const flunt = new Flunt();
